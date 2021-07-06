@@ -1,0 +1,21 @@
+.login-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+}
+
+.login {
+    height: 42px;
+    margin: 10px;
+}
+
+.login span {
+    text-align: center;
+}
+
+img {
+    margin: 30px auto;
+    width: 150px;
+    height: 120px;
+}
