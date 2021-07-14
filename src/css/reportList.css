@@ -10,7 +10,7 @@
     color: #000000;
 }
 
-.description-1 {
+.description {
     margin: 3% 7% 1% 7%;
     height: 16px;
 
@@ -21,7 +21,7 @@
     color: #000000;
 }
 
-.description-2 {
+.duration {
     margin: 1% 7% 3% 7%;
 
     font-style: normal;
@@ -64,7 +64,7 @@
     align-items: center;
 }
 
-.stock-rank-wrap {
+.stock-index-wrap {
     height: 45px;
     width: var(--left-margin);
     font-weight: bold;
@@ -91,6 +91,7 @@
     margin: 0% var(--left-margin) 0% 0%;
 }
 
+.stock-sector,
 .stock-name {
     width: 30%;
     font-style: normal;
@@ -98,19 +99,19 @@
     font-size: 13px;
 }
 
-.stock-value-now {
+.stock-value {
     width: 30%;
     font-size: 14px;
     text-align: right;
 }
 
-.stock-value-predict {
+.stock-value {
     width: 30%;
     font-size: 14px;
     text-align: right;
 }
 
-.blur {
+.sub {
     font-size: 10px;
     color: #9b9b9b;
 }
@@ -122,10 +123,30 @@
     color: #61c799;
 }
 
-.per-gap {
+.per {
     background-color: #fdf5f5;
 }
 
-.per-minus {
-    color: #e6403a;
+.pick-1,
+.price-1 {
+    background-color: #f3fbf9;
+}
+
+.pick-2,
+.price-2 {
+    background-color: #def8ef;
+}
+
+.pick-3,
+.price-3 {
+    background-color: #bbf0de;
+}
+
+.up {
+    color: #60cb98;
+}
+
+a {
+    color: black;
+    text-decoration: none;
 }

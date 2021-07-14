@@ -6,9 +6,15 @@
     --bg-color: #e5e5e5;
     --left-margin: 10%;
 }
-html {
+#root,
+html,
+body {
     font-family: "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
     color: black;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
 }
 
 @font-face {
@@ -17,15 +23,6 @@ html {
         format("woff");
     font-weight: normal;
     font-style: normal;
-}
-body {
-    margin: 0 auto;
-    width: 100%;
-    background-color: #ffffff;
-}
-
-#root {
-    margin: 0 auto;
 }
 
 .line {

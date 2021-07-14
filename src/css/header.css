@@ -5,3 +5,13 @@
     margin: 10px 10px 10px 20px;
     box-sizing: border-box;
 }
+
+.header_wrap {
+    display: flex;
+    justify-content: space-around;
+}
+
+.smallAnt {
+    margin: 0 auto;
+    padding: 8px 0px 0px 50px;
+}
