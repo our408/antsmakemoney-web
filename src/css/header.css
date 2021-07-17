@@ -2,16 +2,15 @@
     font-family: "BMJUA";
     font-size: 25px;
 
-    margin: 10px 10px 10px 20px;
+    margin: 10px 10px 10px 0px;
     box-sizing: border-box;
 }
 
-.header_wrap {
+.header-wrap {
     display: flex;
     justify-content: space-around;
 }
 
-.smallAnt {
-    margin: 0 auto;
+.small-ant {
     padding: 8px 0px 0px 50px;
 }
