@@ -150,3 +150,8 @@ a {
     color: black;
     text-decoration: none;
 }
+
+.new {
+    width: 6px;
+    padding: 0px 2px 4px 2px;
+}

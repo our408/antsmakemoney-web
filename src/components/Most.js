@@ -1,3 +1,5 @@
+import newimg from "../img/new4.png";
+
 const naverUrl = "https://finance.naver.com/item/main.nhn?code=";
 const title = (description, duration) => {
     return (
@@ -47,6 +49,9 @@ const stock = (props) => {
                 <div className="stock-content-wrap">
                     <a className="stock-name" href={naverUrl + props.code}>
                         {props.cell11}
+                        {props.new ? (
+                            <img className="new" src={newimg} alt="new" />
+                        ) : null}
                     </a>
                     <div className="stock-value">{props.cell12}</div>
                     <div className="stock-value">{props.cell13}</div>
