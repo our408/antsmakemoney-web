@@ -12,8 +12,11 @@ import Nav from "../components/Nav";
 
 const url = "https://api.408.co.kr/stock/most";
 
-const descriptionPick = "애널리스트들이 현재 가장 많이 PICK한 종목 TOP 10";
+const descriptionPick = "애널리스트들이 최근 가장 많이 PICK한 종목 TOP 10";
 const thContentsPick = ["종목명", "현재 주가(원)", "목표 주가 (원)"];
+
+const descriptionSector = "애널리스트들이 최근 주목하고 있는 업종 TOP 10";
+const thContentsSector = ["업종명", "리포트 수", "업종 PER"];
 
 const descriptionPer = "애널리스트 PICK 중 저평가된 종목 TOP 10";
 const thContentsPer = ["종목명", "동일업종 PER", "PER"];
@@ -25,6 +28,7 @@ function StockListPage() {
     const [loading, setLoading] = useState(false);
     const [duration, setDuration] = useState("");
     const [mostPick, setMostPick] = useState([]);
+    const [mostSector, setMostSector] = useState([]);
     const [mostPer, setMostPer] = useState([]);
     const [mostPrice, setMostPrice] = useState([]);
 
@@ -33,6 +37,7 @@ function StockListPage() {
             await axios.get(url).then((res) => {
                 const data = JSON.parse(res.data);
                 setMostPick(data["mostPick"]);
+                setMostSector(data["mostSector"]);
                 setMostPer(data["mostPer"]);
                 setMostPrice(data["mostPrice"]);
                 setDuration(data["duration"]);
@@ -45,16 +50,22 @@ function StockListPage() {
         fetchData();
     }, []);
     return (
-        <React.Fragment>
+        <>
             {loading ? (
                 <div id="report-list-wrap">
                     <Header />
-                    <div className="title">REPORT Picks</div>
+                    <div className="title">REPORT PICKs</div>
                     <Most
                         stockDatas={mostPick}
                         description={descriptionPick}
                         duration={duration}
                         thContents={thContentsPick}
+                    />
+                    <Most
+                        stockDatas={mostSector}
+                        description={descriptionSector}
+                        duration={duration}
+                        thContents={thContentsSector}
                     />
                     <Most
                         stockDatas={mostPer}
@@ -73,7 +84,7 @@ function StockListPage() {
             ) : (
                 <LoadingPage />
             )}
-        </React.Fragment>
+        </>
     );
 }
 

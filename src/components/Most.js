@@ -1,4 +1,4 @@
-import newimg from "../img/new4.png";
+import newimg from "../img/new5.png";
 
 const naverUrl = "https://finance.naver.com/item/main.nhn?code=";
 const title = (description, duration) => {
@@ -47,8 +47,16 @@ const stock = (props) => {
             </div>
             <div className="stock-content-wrap-wrap">
                 <div className="stock-content-wrap">
-                    <a className="stock-name" href={naverUrl + props.code}>
+                    <a
+                        className={
+                            props.cell11ClassName
+                                ? props.cell11ClassName
+                                : "stock-title"
+                        }
+                        href={props.code ? naverUrl + props.code : null}
+                    >
                         {props.cell11}
+
                         {props.new ? (
                             <img className="new" src={newimg} alt="new" />
                         ) : null}
@@ -56,15 +64,17 @@ const stock = (props) => {
                     <div className="stock-value">{props.cell12}</div>
                     <div className="stock-value">{props.cell13}</div>
                 </div>
+
                 <div className="stock-content-wrap">
-                    <div className="stock-sector sub">{props.cell21}</div>
+                    <div className="stock-title sub">{props.cell21}</div>
                     <div className="stock-value sub">{props.cell22}</div>
+
                     <div className="stock-value sub">
-                        <span className={props.cell231ClassName}>
-                            {props.cell231}
-                        </span>
-                        <span className={props.cell232ClassName}>
-                            {props.cell232}
+                        {props.arrow ? (
+                            <span className="arrow">{props.arrow} </span>
+                        ) : null}
+                        <span className={props.cell23ClassName}>
+                            {props.cell23}
                         </span>
                     </div>
                 </div>

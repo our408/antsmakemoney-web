@@ -5,6 +5,7 @@
     --width: 360px; /* 모바일이든 pc든 360으로 고정. 갤럭시 기준으로 괜찮은지 체크 함 해보자 */
     --bg-color: #e5e5e5;
     --left-margin: 10%;
+    --stock-width: 30%;
 }
 #root,
 html,
