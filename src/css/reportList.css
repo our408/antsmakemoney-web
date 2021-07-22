@@ -119,6 +119,10 @@ a {
     font-size: 10px;
 }
 
+.small {
+    font-size: 12px;
+}
+
 .sub {
     font-size: 10px;
     color: #9b9b9b;
