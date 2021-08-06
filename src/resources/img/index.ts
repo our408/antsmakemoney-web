@@ -1,0 +1,5 @@
+export { default as antsGold } from './antsGold.gif'
+export { default as antsGreen } from './antsGreen.gif'
+export { default as antHead } from './antHead.png'
+export { default as earning } from './earning.gif'
+export { default as ant200 } from './ant200.png'
