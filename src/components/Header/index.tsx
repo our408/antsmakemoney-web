@@ -5,16 +5,17 @@ import { Line } from '@resources/GlobalStyles'
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 10px 5px 0px 5px;
+  padding: 5px 5px 0px 5px;
 `
 
 const Title = styled.div`
   font-size: 25px;
-  font-weight: 700;
+  font-weight: 500;
 `
 
 const Ant = styled.img`
   width: 50px;
+  height: 100%;
 `
 
 export const Header = () => {

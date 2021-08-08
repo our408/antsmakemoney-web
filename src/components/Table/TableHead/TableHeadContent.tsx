@@ -13,9 +13,8 @@ const TableHeadContentContainer = styled.div`
 `
 
 const TableHeadContent = styled.div<IDiv>`
-  width: ${(props) => props.width || '360px'};
+  width: ${(props) => props.width};
   margin: 6px 0px 0px 0px;
-  font-style: normal;
   font-weight: 500;
   font-size: 11px;
 `

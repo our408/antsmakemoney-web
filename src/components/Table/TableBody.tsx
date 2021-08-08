@@ -22,6 +22,7 @@ interface ITableBodyData {
   sector?: boolean
   value?: boolean
   sub?: boolean
+  length?: number
 }
 
 interface ISpan {
@@ -63,15 +64,13 @@ const TableBodyDataContainer = styled.div<IDiv>`
 
 const TableBodyData = styled.div<ITableBodyData>`
   width: ${SIZES.interval};
-  animation: modal-show 0.5s;
+  animation: modal-show 0.3s;
 
   @keyframes modal-show {
     from {
-      opacity: 0;
       margin-bottom: -10px;
     }
     to {
-      opacity: 1;
       margin-bottom: 0;
     }
   }
@@ -80,19 +79,8 @@ const TableBodyData = styled.div<ITableBodyData>`
     props.subject
       ? `
           font-weight: 500;
-          font-size: 13px;
-          font-style: normal;
+          font-size: ${props.length! > 7 ? '10px' : '13px'};
       `
-      : undefined}
-
-  ${(props) =>
-    props.sector
-      ? `
-      font-weight: 500;
-      font-size: 12px;
-      font-style: normal;
-      text-align: center;
-    `
       : undefined}
 
   ${(props) =>
@@ -138,7 +126,9 @@ export const TableBody = (props: ITableBodyProps) => {
       <TableBodyIndex margin={SIZES.sideMargin}>{index}</TableBodyIndex>
       <TableBodyRow margin={SIZES.sideMargin}>
         <TableBodyDataContainer margin={SIZES.sideMargin}>
-          <TableBodyData subject>{cell11}</TableBodyData>
+          <TableBodyData subject length={cell11.length}>
+            {cell11}
+          </TableBodyData>
           <TableBodyData value>{cell12}</TableBodyData>
           <TableBodyData value>{cell13}</TableBodyData>
         </TableBodyDataContainer>

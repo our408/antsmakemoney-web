@@ -25,8 +25,8 @@ const thContentsPrice = ['종목명', '현재 주가(원)', '목표 주가 (원)
 
 const TableContainer = styled.div``
 const Title = styled.div`
-  margin: 7% auto;
-  font-weight: 900;
+  margin: 6% auto;
+  font-weight: 500;
   font-size: 20px;
   text-align: center;
 `
@@ -45,16 +45,26 @@ export const Chart = () => {
       await axios.get(url).then((res) => {
         const data = JSON.parse(res.data)
 
-        setMost([{ data: data['mostPick'] }])
+        setMost([
+          {
+            data: data['mostPick'],
+            description: descriptionPick,
+            tableHeadContent: thContentsPick,
+          },
+          {
+            data: data['mostSector'],
+            description: descriptionSector,
+            tableHeadContent: thContentsSector,
+          },
+        ])
         setDuration(data['duration'])
-        setMostPick(data['mostPick'])
         //setMostSector(data['mostSector'])
         //setMostPer(data['mostPer'])
         //setMostPrice(data['mostPrice'])
       })
       setTimeout(() => {
         setLoading(true)
-      }, 1000)
+      }, 10)
     }
     fetchData()
   }, [])
@@ -68,11 +78,15 @@ export const Chart = () => {
           {most.map((props: any, index: number) => {
             return (
               <TableContainer key={index}>
-                <TableTitle description={descriptionPick} duration={duration} />
-                <TableHead content={thContentsPick} />
+                <TableTitle
+                  description={props.description}
+                  duration={duration}
+                />
+                <TableHead content={props.tableHeadContent} />
                 {props.data.map((data: ITableBody, index: number) => {
                   return <TableBody data={data} key={index} />
                 })}
+                <Empty />
               </TableContainer>
             )
           })}
