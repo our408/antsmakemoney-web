@@ -37,10 +37,14 @@ export const Line = styled.div`
   width: 100%;
   box-sizing: border-box;
   border-bottom: 1px solid #f2f2f2;
+  margin: 5px 0px;
 `
 
-export const Empty = styled.div`
+interface IEmpty {
+  height?:number
+}
+export const Empty = styled.div<IEmpty>`
   width: 100%;
-  height: 50px;
+  height: ${(props) => props.height ? `${props.height}px` : `50px`};
   box-sizing: border-box;
 `

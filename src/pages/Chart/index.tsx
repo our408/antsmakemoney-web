@@ -3,7 +3,7 @@ import axios from 'axios'
 
 import styled from 'styled-components'
 
-import { Header, Loading } from '@components'
+import { Header, Loading, Login, Footer, Nav } from '@components'
 import { Empty } from '@resources/GlobalStyles'
 import { TableBody, ITableBody } from '../../components/Table/TableBody'
 import { TableHead } from '../../components/Table/TableHead'
@@ -64,7 +64,7 @@ export const Chart = () => {
       })
       setTimeout(() => {
         setLoading(true)
-      }, 10)
+      }, 1000)
     }
     fetchData()
   }, [])
@@ -86,11 +86,15 @@ export const Chart = () => {
                 {props.data.map((data: ITableBody, index: number) => {
                   return <TableBody data={data} key={index} />
                 })}
+
                 <Empty />
               </TableContainer>
             )
           })}
-          <Empty />
+          <Footer />
+          <Empty height={60} />
+          <Nav />
+          <Login />
         </>
       ) : (
         <Loading />
