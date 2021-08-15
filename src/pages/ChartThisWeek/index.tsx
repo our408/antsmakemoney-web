@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
 
 import styled from 'styled-components'
+
+import { getChart } from '@data/ChartAPI'
 
 import { Header, Loading, Login, Footer, Nav } from '@components'
 import { Empty } from '@resources/GlobalStyles'
@@ -31,7 +32,7 @@ const Title = styled.div`
   text-align: center;
 `
 
-export const Chart = () => {
+export const ChartThisWeek = () => {
   const [loading, setLoading] = useState(false)
   const [duration, setDuration] = useState('')
   const [most, setMost] = useState([{}])
@@ -41,10 +42,9 @@ export const Chart = () => {
   const [mostPrice, setMostPrice] = useState([])
 
   useEffect(() => {
-    const fetchData = async () => {
-      await axios.get(url).then((res) => {
-        const data = JSON.parse(res.data)
-
+    const fetchData = () => {
+      const datas = getChart()
+      datas.then((data) => {
         setMost([
           {
             data: data['mostPick'],
@@ -62,6 +62,7 @@ export const Chart = () => {
         //setMostPer(data['mostPer'])
         //setMostPrice(data['mostPrice'])
       })
+
       setTimeout(() => {
         setLoading(true)
       }, 1000)
@@ -94,7 +95,7 @@ export const Chart = () => {
           <Footer />
           <Empty height={60} />
           <Nav />
-          <Login />
+          <Login loginDefault={true} />
         </>
       ) : (
         <Loading />

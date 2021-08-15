@@ -1,1 +1,2 @@
-export * from './Chart'
+export * from './ChartThisWeek'
+export * from './ChartLastWeek'

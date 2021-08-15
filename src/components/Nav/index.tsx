@@ -1,4 +1,6 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
+import { SIZES } from '@resources/sizes'
 
 const Container = styled.nav`
   display: flex;
@@ -16,7 +18,7 @@ const Container = styled.nav`
   bottom: 0;
 `
 
-const NavContent = styled.a`
+const NavContent = styled(Link)`
   display: block;
   font-size: 12px;
   width: 100%;
@@ -29,9 +31,9 @@ const NavContent = styled.a`
 export const Nav = () => {
   return (
     <Container>
-      <NavContent>이번주</NavContent>
-      <NavContent>저번주</NavContent>
-      <NavContent>마이페이지</NavContent>
+      <NavContent to={'/thisweek'}>이번주</NavContent>
+      <NavContent to={'/lastweek'}>저번주</NavContent>
+      <NavContent to={'/mypage'}>마이페이지</NavContent>
     </Container>
   )
 }

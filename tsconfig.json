@@ -77,7 +77,7 @@
     "forceConsistentCasingInFileNames": true /* 동일한 파일에 대한 일관되지 않은 케이스 참조를 허용하지 않음 */,
     "baseUrl": ".",
     "paths": {
-      "@data": ["./src/data/"],
+      "@data/*": ["./src/data/*"],
       "@domain": ["./src/domain/"],
       "@components": ["./src/components/"],
       "@pages": ["./src/pages/"],

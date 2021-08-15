@@ -1,12 +1,13 @@
-import { Route, BrowserRouter, Switch } from 'react-router-dom'
-import { Chart } from './pages/Chart'
+import { Route, BrowserRouter, Switch, Redirect } from 'react-router-dom'
+import { ChartThisWeek, ChartLastWeek } from './pages'
 
 function App() {
   return (
     <BrowserRouter>
-      <Switch>
-        <Route path="/" component={Chart} />
-      </Switch>
+      <Route path={'/thisweek'} component={ChartThisWeek} />
+      <Route path={'/lastweek'} component={ChartLastWeek} />
+
+      <Redirect path="/" to="/thisweek" />
     </BrowserRouter>
   )
 }

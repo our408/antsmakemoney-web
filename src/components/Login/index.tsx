@@ -73,15 +73,20 @@ const Main = styled.div`
   border-bottom: 1px solid #eceff1;
 `
 
-export const Login = () => {
-  const [isLogin, setLogin] = useState(false)
+interface ILogin {
+  loginDefault: Boolean
+}
+
+export const Login = (props: ILogin) => {
+  const [isLogin, setLogin] = useState(props.loginDefault)
 
   const success = (props: any) => {
     console.log(props)
-    localStorage.setItem('login', 'login')
+    //localStorage.setItem('login', 'login')
     setLogin(true)
   }
 
+  // 처음 들어 왔을때 localhost 확인
   useEffect(() => {
     const checkLogin = () => {
       if (localStorage.getItem('login') == 'login') {
@@ -100,7 +105,7 @@ export const Login = () => {
           <LoginModal>
             <Header>
               <HeaderIcon src={antHead} alt="🐜" />
-              로그인
+              로그인 후 이용 가능합니다.
             </Header>
             <Main>
               <CompanyImg src={antsLogin} alt="개미도 때론 돈을 번다" />
@@ -108,8 +113,7 @@ export const Login = () => {
               <KakaoLogin
                 token={token}
                 onSuccess={(props) => success(props)}
-                onFail={console.error}
-                onLogout={console.info}
+                onFail={() => console.log('error')}
                 render={({ onClick }) => {
                   return (
                     <a
