@@ -10,12 +10,14 @@ import { TableBody, ITableBody } from '../../components/Table/TableBody'
 import { TableHead } from '../../components/Table/TableHead'
 import { TableTitle } from '../../components/Table/TableTitle'
 
-const url = 'https://api.408.co.kr/stock/most'
-
-const descriptionPick = '애널리스트들이 최근 가장 많이 PICK한 종목 TOP 10'
+const weeks: any = {
+  this: '이번주',
+  last: '저번주',
+}
+const descriptionPick = '애널리스트들이 가장 많이 PICK한 종목 TOP 10'
 const thContentsPick = ['종목명', '현재 주가(원)', '목표 주가 (원)']
 
-const descriptionSector = '애널리스트들이 최근 주목하고 있는 업종 TOP 10'
+const descriptionSector = '애널리스트들이 주목하고 있는 업종 TOP 10'
 const thContentsSector = ['업종명', '업종 리포트 수', '업종 PER']
 
 const descriptionPer = '애널리스트 PICK 중 저평가된 종목 TOP 10'
@@ -32,24 +34,31 @@ const Title = styled.div`
   text-align: center;
 `
 
-export const ChartThisWeek = () => {
+interface IChart {
+  week: string
+}
+
+export const Chart = (props: IChart) => {
   const [loading, setLoading] = useState(false)
   const [duration, setDuration] = useState('')
-  const [most, setMost] = useState([{}])
+  const [tableData, setTableData] = useState([{}])
   const [mostPick, setMostPick] = useState([])
   const [mostSector, setMostSector] = useState([])
   const [mostPer, setMostPer] = useState([])
   const [mostPrice, setMostPrice] = useState([])
 
+  const week = weeks[props.week]
+
   useEffect(() => {
     const fetchData = () => {
-      const datas = getChart()
+      const datas = getChart(props.week)
       datas.then((data) => {
-        setMost([
+        setTableData([
           {
             data: data['mostPick'],
             description: descriptionPick,
             tableHeadContent: thContentsPick,
+            week: week,
           },
           {
             data: data['mostSector'],
@@ -76,12 +85,13 @@ export const ChartThisWeek = () => {
         <>
           <Header />
           <Title>REPORT PICKs</Title>
-          {most.map((props: any, index: number) => {
+          {tableData.map((props: any, index: number) => {
             return (
               <TableContainer key={index}>
                 <TableTitle
                   description={props.description}
                   duration={duration}
+                  week={week}
                 />
                 <TableHead content={props.tableHeadContent} />
                 {props.data.map((data: ITableBody, index: number) => {
@@ -93,7 +103,6 @@ export const ChartThisWeek = () => {
             )
           })}
           <Footer />
-          <Empty height={60} />
           <Nav />
           <Login loginDefault={true} />
         </>

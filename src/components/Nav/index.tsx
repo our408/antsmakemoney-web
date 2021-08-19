@@ -12,9 +12,8 @@ const Container = styled.nav`
 
   border-top: 0.5px solid black;
 
-  position: fixed;
-  left: 0;
-  right: 0;
+  position: sticky;
+  position: --webkit-sticky;
   bottom: 0;
 `
 

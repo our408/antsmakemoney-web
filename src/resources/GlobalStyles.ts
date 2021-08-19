@@ -29,6 +29,10 @@ const GlobalStyle = createGlobalStyle`
 
   }
 
+  p {
+    margin: 0;
+  }
+
   
 `
 export default GlobalStyle
@@ -41,10 +45,10 @@ export const Line = styled.div`
 `
 
 interface IEmpty {
-  height?:number
+  height?: number
 }
 export const Empty = styled.div<IEmpty>`
   width: 100%;
-  height: ${(props) => props.height ? `${props.height}px` : `50px`};
+  height: ${(props) => (props.height ? `${props.height}px` : `50px`)};
   box-sizing: border-box;
 `

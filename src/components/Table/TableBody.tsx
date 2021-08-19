@@ -10,9 +10,6 @@ export interface ITableBody {
   cell21: string
   cell22: string
   cell23: string
-  cell11ClassName?: string
-  cell23ClassName?: string
-  arrow: string
 }
 
 interface ITableBodyData {
@@ -27,6 +24,10 @@ interface ITableBodyData {
 
 interface ISpan {
   arrow?: boolean
+}
+
+interface ITableBodyProps {
+  data: ITableBody
 }
 
 const TableBodyContainer = styled.div`
@@ -113,13 +114,8 @@ const defaultProps = {
   sub: false,
 }
 
-interface ITableBodyProps {
-  data: ITableBody
-}
-
 export const TableBody = (props: ITableBodyProps) => {
-  const { index, cell11, cell12, cell13, cell21, cell22, cell23, arrow } =
-    props.data
+  const { index, cell11, cell12, cell13, cell21, cell22, cell23 } = props.data
 
   return (
     <TableBodyContainer>
@@ -141,7 +137,7 @@ export const TableBody = (props: ITableBodyProps) => {
             {cell22}
           </TableBodyData>
           <TableBodyData value sub>
-            <Span arrow>{arrow}</Span>
+            <Span arrow>▲</Span>
             <Span>{cell23}</Span>
           </TableBodyData>
         </TableBodyDataContainer>
