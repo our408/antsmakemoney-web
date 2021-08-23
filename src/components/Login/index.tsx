@@ -8,6 +8,7 @@ import {
   antsLogin,
 } from '@resources/img'
 import { useState, useEffect } from 'react'
+import { createUser, getUser } from '@data/UserAPI'
 
 const Container = styled.div`
   display: flex;
@@ -32,10 +33,6 @@ const Container = styled.div`
   }
 `
 
-interface ILoginModal {
-  isLogin: Boolean
-}
-
 const LoginModal = styled.div`
   width: 85%;
   margin: 0 auto;
@@ -59,7 +56,6 @@ const HeaderIcon = styled.img`
   width: 15px;
   padding: 5px 5px 0px 7px;
 `
-const Span = styled.span``
 
 const CompanyImg = styled.img``
 
@@ -81,15 +77,27 @@ export const Login = (props: ILogin) => {
   const [isLogin, setLogin] = useState(props.loginDefault)
 
   const success = (props: any) => {
-    console.log(props)
-    //localStorage.setItem('login', 'login')
+    const profile = props['profile']
+
+    const nickname = profile['properties']['nickname']
+    const email = profile['kakao_account']['email']
+    const age = profile['kakao_account']['age_range']
+    const gender = profile['kakao_account']['gender']
+    const oauth = 'kakao'
+
+    const data = createUser(nickname, email, oauth, gender, age)
+
+    data.then((data) => {
+      localStorage.setItem('UID', data.uuid)
+    })
+
     setLogin(true)
   }
 
   // 처음 들어 왔을때 localhost 확인
   useEffect(() => {
     const checkLogin = () => {
-      if (localStorage.getItem('login') == 'login') {
+      if (localStorage.getItem('UID')) {
         setLogin(true)
       }
     }
@@ -105,7 +113,7 @@ export const Login = (props: ILogin) => {
           <LoginModal>
             <Header>
               <HeaderIcon src={antHead} alt="🐜" />
-              로그인 후 이용 가능합니다.
+              어디서 온 개미냐
             </Header>
             <Main>
               <CompanyImg src={antsLogin} alt="개미도 때론 돈을 번다" />
@@ -113,7 +121,7 @@ export const Login = (props: ILogin) => {
               <KakaoLogin
                 token={token}
                 onSuccess={(props) => success(props)}
-                onFail={() => console.log('error')}
+                onFail={() => alert('잠시 후에 다시 시도 해주세요!')}
                 render={({ onClick }) => {
                   return (
                     <a

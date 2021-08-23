@@ -6,6 +6,7 @@ const Container = styled.div`
   height: 25px;
   font-size: 10px;
   background-color: ${COLORS.black30};
+  margin: 10px 0%;
 `
 
 export const Footer = () => {

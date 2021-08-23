@@ -19,6 +19,7 @@ const Ant = styled.img`
 `
 
 export const Header = () => {
+  console.log('header load')
   return (
     <>
       <Container>

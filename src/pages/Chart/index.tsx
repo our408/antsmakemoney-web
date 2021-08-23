@@ -74,8 +74,9 @@ export const Chart = (props: IChart) => {
 
       setTimeout(() => {
         setLoading(true)
-      }, 1000)
+      }, 800)
     }
+
     fetchData()
   }, [])
 
@@ -104,7 +105,6 @@ export const Chart = (props: IChart) => {
           })}
           <Footer />
           <Nav />
-          <Login loginDefault={true} />
         </>
       ) : (
         <Loading />
