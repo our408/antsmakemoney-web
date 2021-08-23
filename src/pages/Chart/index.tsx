@@ -28,6 +28,7 @@ const thContentsPrice = ['종목명', '현재 주가(원)', '목표 주가 (원)
 
 const TableContainer = styled.div``
 const Title = styled.div`
+  font-family: NeoDungGeunMo;
   margin: 6% auto;
   font-weight: 500;
   font-size: 20px;

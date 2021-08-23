@@ -4,6 +4,8 @@ import styled from 'styled-components'
 import { default as AppleSDGothicNeoM } from './fonts/AppleSDGothicNeoM.ttf'
 import { default as AppleSDGothicNeoB } from './fonts/AppleSDGothicNeoB.ttf'
 import { default as NotoSansKRMedium } from './fonts/NotoSansKR-Medium.otf'
+import { default as DungGeunMo } from './fonts/DungGeunMo.ttf'
+import { default as NeoDungGeunMo } from './fonts/neodgm_pro.ttf'
 
 //@import url(${fonts})
 const GlobalStyle = createGlobalStyle`
@@ -11,6 +13,16 @@ const GlobalStyle = createGlobalStyle`
     font-family: AppleSDGothicNeo;
     src: url(${AppleSDGothicNeoM}) format('opentype');
     unicode-range: U+0041-005A, U+0061-007A, U+0030-0039;
+  }
+
+  @font-face {
+    font-family: DungGeunMo;
+    src: url(${DungGeunMo}) format('opentype');
+  }
+
+  @font-face {
+    font-family: NeoDungGeunMo;
+    src: url(${NeoDungGeunMo}) format('opentype');
   }
 
 
@@ -21,7 +33,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   #root, html, body {
-      font-family: AppleSDGothicNeo, NotoSansKR;
+      font-family: NeoDungGeunMo, AppleSDGothicNeo, NotoSansKR;
       margin: 0 auto;
       max-width: 360px;
       background-color: #ffffff;
@@ -41,7 +53,6 @@ export const Line = styled.div`
   width: 100%;
   box-sizing: border-box;
   border-bottom: 1px solid #f2f2f2;
-  margin: 5px 0px;
 `
 
 interface IEmpty {

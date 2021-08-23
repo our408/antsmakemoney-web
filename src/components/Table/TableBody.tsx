@@ -80,7 +80,7 @@ const TableBodyData = styled.div<ITableBodyData>`
     props.subject
       ? `
           font-weight: 500;
-          font-size: ${props.length! > 7 ? '10px' : '13px'};
+          font-size: ${props.length! > 6 ? '10px' : '12px'};
       `
       : undefined}
 
