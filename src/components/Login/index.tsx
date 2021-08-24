@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import KakaoLogin from 'react-kakao-login'
 import { SIZES } from '@resources/sizes'
-import { Line } from '@resources/GlobalStyles'
+import { Line } from '@components'
 import {
   antHead,
   kakaoLogin as kakaoLoginImage,

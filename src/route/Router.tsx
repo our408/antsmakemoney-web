@@ -1,4 +1,5 @@
 import { Route, BrowserRouter, Switch, Redirect } from 'react-router-dom'
+import { Nav } from '@components'
 import { Chart, Mypage } from '@pages'
 
 export const Router = () => {
@@ -17,8 +18,9 @@ export const Router = () => {
       </Route>
 
       <Route exact path={'/'}>
-        <Chart week={'this'} />
+        <Mypage />
       </Route>
+      <Nav />
     </BrowserRouter>
   )
 }

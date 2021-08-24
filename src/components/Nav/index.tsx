@@ -32,7 +32,7 @@ export const Nav = () => {
     <Container>
       <NavContent to={'/thisweek'}>이번주</NavContent>
       <NavContent to={'/lastweek'}>저번주</NavContent>
-      <NavContent to={'/meditation'}>걱정되면</NavContent>
+      <NavContent to={'/meditation'}>불안해?</NavContent>
       <NavContent to={'/mypage'}>마이페이지</NavContent>
     </Container>
   )

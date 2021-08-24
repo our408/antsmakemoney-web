@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { COLORS } from '@resources/colors'
 
 const Container = styled.div`
+  font-family: AppleSDGothicNeo;
   padding: 10px;
   height: 25px;
   font-size: 10px;

@@ -1,16 +1,15 @@
 import styled from 'styled-components'
 import { ant200 } from '@resources/img'
-import { Line } from '@resources/GlobalStyles'
+import { Line } from '@components'
 
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 5px 5px 0px 5px;
+  margin-top: 10px;
 `
 
 const Title = styled.div`
   font-size: 24px;
-  font-weight: 500;
 `
 
 const Ant = styled.img`
@@ -19,7 +18,6 @@ const Ant = styled.img`
 `
 
 export const Header = () => {
-  console.log('header load')
   return (
     <>
       <Container>

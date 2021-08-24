@@ -1,10 +1,10 @@
 import { Router } from './route/Router'
-import { Login } from '@components'
+import { Login, Nav } from '@components'
 
 function App() {
   return (
     <>
-      <Login loginDefault={false} />
+      <Login loginDefault={true} />
       <Router />
     </>
   )

@@ -4,6 +4,7 @@ import { SIZES, IDiv } from '@resources/sizes'
 export interface ITableBody {
   index: string
   code?: string
+  arrow?: boolean
   cell11: string
   cell12: string
   cell13: string
@@ -14,16 +15,11 @@ export interface ITableBody {
 
 interface ITableBodyData {
   interval?: string
-  fontsize?: number
   subject?: boolean
   sector?: boolean
   value?: boolean
   sub?: boolean
   length?: number
-}
-
-interface ISpan {
-  arrow?: boolean
 }
 
 interface ITableBodyProps {
@@ -101,21 +97,17 @@ const TableBodyData = styled.div<ITableBodyData>`
       : undefined}
 `
 
-const Span = styled.span<ISpan>`
-  ${(props) => (props.arrow ? ` color : #60cb98` : undefined)}
-`
-
-const defaultProps = {
-  interval: SIZES.interval,
-  fontsize: 14,
-  subject: false,
-  sector: false,
-  value: false,
-  sub: false,
+interface IArrow {
+  arrow?: boolean
 }
+const Arrow = styled.span<IArrow>`
+  ${(props) => (props.arrow ? 'color : #60cb98' : 'display: None')}
+`
+const Span = styled.span``
 
 export const TableBody = (props: ITableBodyProps) => {
-  const { index, cell11, cell12, cell13, cell21, cell22, cell23 } = props.data
+  const { index, cell11, cell12, cell13, cell21, cell22, cell23, arrow } =
+    props.data
 
   return (
     <TableBodyContainer>
@@ -137,13 +129,21 @@ export const TableBody = (props: ITableBodyProps) => {
             {cell22}
           </TableBodyData>
           <TableBodyData value sub>
-            <Span arrow>▲</Span>
+            <Arrow arrow={arrow}>▲</Arrow>
             <Span>{cell23}</Span>
           </TableBodyData>
         </TableBodyDataContainer>
       </TableBodyRow>
     </TableBodyContainer>
   )
+}
+
+const defaultProps = {
+  interval: SIZES.interval,
+  subject: false,
+  sector: false,
+  value: false,
+  sub: false,
 }
 
 TableBodyData.defaultProps = defaultProps

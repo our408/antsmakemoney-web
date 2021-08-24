@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Line } from '@resources/GlobalStyles'
+import { Line } from '@components'
 
 const TableTitleDescription = styled.h1`
   height: 16px;
@@ -25,7 +25,7 @@ const Week = styled.p`
 interface ITableTitle {
   description: string
   duration: string
-  week: string
+  week?: string
 }
 
 export const TableTitle = (TableTitleObj: ITableTitle) => {
