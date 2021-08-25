@@ -18,7 +18,7 @@ export const Router = () => {
       </Route>
 
       <Route exact path={'/'}>
-        <Mypage />
+        <Chart week={'this'} />
       </Route>
       <Nav />
     </BrowserRouter>

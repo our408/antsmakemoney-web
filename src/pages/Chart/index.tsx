@@ -2,19 +2,10 @@ import { useState, useEffect } from 'react'
 
 import styled from 'styled-components'
 
-import { getChart } from '@data/ChartAPI'
-
-import {
-  Header,
-  Loading,
-  Login,
-  Footer,
-  Nav,
-  TableBody,
-  TableHead,
-} from '@components'
+import { Footer, TableBody, TableHead } from '@components'
 import { Empty } from '@resources/GlobalStyles'
 import { TableTitle } from '../../components/Table/TableTitle'
+import { table } from 'node:console'
 
 const weeks: any = {
   this: '이번주',
@@ -46,75 +37,71 @@ interface IChart {
 }
 
 export const Chart = (props: IChart) => {
-  const [loading, setLoading] = useState(false)
-  const [duration, setDuration] = useState('')
-  const [tableData, setTableData] = useState([{}])
-  const [mostPick, setMostPick] = useState([])
-  const [mostSector, setMostSector] = useState([])
-  const [mostPer, setMostPer] = useState([])
-  const [mostPrice, setMostPrice] = useState([])
+  //const [duration, setDuration] = useState('')
+  //const [tableData, setTableData] = useState([{}])
 
   const week = weeks[props.week]
-
+  const duration = JSON.parse(sessionStorage.getItem(`${props.week}_duration`)!)
+  const tableData = [
+    {
+      data: JSON.parse(sessionStorage.getItem(`${props.week}_mp`)!),
+      description: descriptionPick,
+      tableHeadContent: thContentsPick,
+      week: week,
+    },
+    {
+      data: JSON.parse(sessionStorage.getItem(`${props.week}_ms`)!),
+      description: descriptionSector,
+      tableHeadContent: thContentsSector,
+      week: week,
+    },
+  ]
+  /*
   useEffect(() => {
+    console.log('aaa')
     const fetchData = () => {
-      const datas = getChart(props.week)
-      datas.then((data) => {
-        setTableData([
-          {
-            data: data['mostPick'],
-            description: descriptionPick,
-            tableHeadContent: thContentsPick,
-            week: week,
-          },
-          {
-            data: data['mostSector'],
-            description: descriptionSector,
-            tableHeadContent: thContentsSector,
-          },
-        ])
-        setDuration(data['duration'])
-        //setMostSector(data['mostSector'])
-        //setMostPer(data['mostPer'])
-        //setMostPrice(data['mostPrice'])
-      })
+      setTableData([
+        {
+          data: JSON.parse(sessionStorage.getItem(`${props.week}_mp`)!),
+          description: descriptionPick,
+          tableHeadContent: thContentsPick,
+          week: week,
+        },
+        {
+          data: JSON.parse(sessionStorage.getItem(`${props.week}_ms`)!),
+          description: descriptionSector,
+          tableHeadContent: thContentsSector,
+          week: week,
+        },
+      ])
 
-      setTimeout(() => {
-        setLoading(true)
-      }, 800)
+      setDuration(JSON.parse(sessionStorage.getItem(`${props.week}_duration`)!))
     }
-
     fetchData()
   }, [])
+  */
 
   return (
     <>
-      {loading ? (
-        <>
-          <Header />
-          <Title>REPORT PICKs</Title>
-          {tableData.map((props: any, index: number) => {
-            return (
-              <TableContainer key={index}>
-                <TableTitle
-                  description={props.description}
-                  duration={duration}
-                  week={week}
-                />
-                <TableHead content={props.tableHeadContent} />
-                {props.data.map((data: any, index: number) => {
-                  return <TableBody data={data} key={index} />
-                })}
+      <Title>REPORT PICKs</Title>
 
-                <Empty />
-              </TableContainer>
-            )
-          })}
-          <Footer />
-        </>
-      ) : (
-        <Loading />
-      )}
+      {tableData.map((props: any, index: number) => {
+        console.log('duration', duration)
+        return (
+          <TableContainer key={index}>
+            <TableTitle
+              description={props.description}
+              duration={duration}
+              week={week}
+            />
+            <TableHead content={props.tableHeadContent} />
+
+            {props.data.map((data: any, index: number) => {
+              return <TableBody data={data} key={index} />
+            })}
+          </TableContainer>
+        )
+      })}
     </>
   )
 }

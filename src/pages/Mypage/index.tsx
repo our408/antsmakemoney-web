@@ -215,7 +215,6 @@ export const Mypage = () => {
 
   return (
     <>
-      <Header />
       <Introduce>{nickname} 개미</Introduce>
       <Line />
       <QnA>
