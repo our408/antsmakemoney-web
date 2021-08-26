@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react'
 
 import styled from 'styled-components'
 
-import { Footer, TableBody, TableHead } from '@components'
-import { Empty } from '@resources/GlobalStyles'
+import { TableBody, TableHead } from '@components'
 import { TableTitle } from '../../components/Table/TableTitle'
 import { table } from 'node:console'
 
@@ -23,7 +22,9 @@ const thContentsPer = ['종목명', '동일업종 PER', 'PER']
 const descriptionPrice = '애널리스트 PICK 중 크게 오를 것 같은 종목 TOP 10'
 const thContentsPrice = ['종목명', '현재 주가 (원)', '목표 주가 (원)']
 
-const TableContainer = styled.div``
+const TableContainer = styled.div`
+  margin-bottom: 60px;
+`
 const Title = styled.div`
   font-family: NeoDungGeunMo;
   margin: 6% auto;
@@ -37,11 +38,7 @@ interface IChart {
 }
 
 export const Chart = (props: IChart) => {
-  //const [duration, setDuration] = useState('')
-  //const [tableData, setTableData] = useState([{}])
-
   const week = weeks[props.week]
-  const duration = JSON.parse(sessionStorage.getItem(`${props.week}_duration`)!)
   const tableData = [
     {
       data: JSON.parse(sessionStorage.getItem(`${props.week}_mp`)!),
@@ -56,37 +53,13 @@ export const Chart = (props: IChart) => {
       week: week,
     },
   ]
-  /*
-  useEffect(() => {
-    console.log('aaa')
-    const fetchData = () => {
-      setTableData([
-        {
-          data: JSON.parse(sessionStorage.getItem(`${props.week}_mp`)!),
-          description: descriptionPick,
-          tableHeadContent: thContentsPick,
-          week: week,
-        },
-        {
-          data: JSON.parse(sessionStorage.getItem(`${props.week}_ms`)!),
-          description: descriptionSector,
-          tableHeadContent: thContentsSector,
-          week: week,
-        },
-      ])
-
-      setDuration(JSON.parse(sessionStorage.getItem(`${props.week}_duration`)!))
-    }
-    fetchData()
-  }, [])
-  */
+  const duration = JSON.parse(sessionStorage.getItem(`${props.week}_duration`)!)
 
   return (
     <>
       <Title>REPORT PICKs</Title>
 
       {tableData.map((props: any, index: number) => {
-        console.log('duration', duration)
         return (
           <TableContainer key={index}>
             <TableTitle

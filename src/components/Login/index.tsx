@@ -74,7 +74,7 @@ interface ILogin {
 }
 
 export const Login = (props: ILogin) => {
-  const [isLogin, setLogin] = useState(props.loginDefault)
+  const [LoginUI, setLoginUI] = useState(props.loginDefault)
 
   const success = (props: any) => {
     const profile = props['profile']
@@ -88,17 +88,38 @@ export const Login = (props: ILogin) => {
     const data = createUser(nickname, email, oauth, gender, age)
 
     data.then((data) => {
-      localStorage.setItem('UID', data.uuid)
+      localStorage.setItem('uid', data.uuid)
+      const userData = getUser(data.uuid)
+
+      userData.then((data) => {
+        localStorage.setItem('nickname', data['nickname'])
+      })
     })
 
-    setLogin(true)
+    setLoginUI(false)
   }
 
   // 처음 들어 왔을때 localhost 확인
   useEffect(() => {
     const checkLogin = () => {
-      if (localStorage.getItem('UID')) {
-        setLogin(true)
+      if (localStorage.getItem('uid') == undefined) {
+        // 로컬 스토리지에 uid가 없어서 로그인 UI를 보여줘야 함
+        setLoginUI(true)
+      } else {
+        // 로컬 스토리지에 uid가 있는데, 올바른 uid 인지 검증
+
+        const uuid = localStorage.getItem('uid')!
+        const userData = getUser(uuid)
+        userData.then((data) => {
+          if (data['nickname']) {
+            // uuid가 검증 통과
+            localStorage.setItem('nickname', data['nickname'])
+          } else {
+            // uuid가 옳지 않은 경우 로그인 UI 보여주고 로컬스토리지 초기화
+            setLoginUI(true)
+            localStorage.clear()
+          }
+        })
       }
     }
 
@@ -108,7 +129,7 @@ export const Login = (props: ILogin) => {
   const token = '3d589cb30dd93b4cd8f90a7dbd76c5cf'
   return (
     <>
-      {isLogin ? undefined : (
+      {LoginUI ? (
         <Container>
           <LoginModal>
             <Header>
@@ -139,7 +160,7 @@ export const Login = (props: ILogin) => {
             </Main>
           </LoginModal>
         </Container>
-      )}
+      ) : undefined}
     </>
   )
 }
