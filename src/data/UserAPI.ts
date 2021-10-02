@@ -7,7 +7,7 @@ export const createUser = async (
   gender?: string,
   age?: string
 ) => {
-  const url = `https://api.408.co.kr/stock/user`
+  const url = `https://api.408.co.kr/user`
   const body = {
     nickname: nickname,
     email: email,
@@ -22,7 +22,15 @@ export const createUser = async (
 }
 
 export const getUser = async (uuid: string) => {
-  const url = `https://api.408.co.kr/stock/user/me`
+  const url = `https://api.408.co.kr/user/me`
+
+  const response = await axios.get(url, { headers: { UID: uuid } })
+
+  return response.data
+}
+
+export const getUserAnswer = async (uuid: string) => {
+  const url = `https://api.408.co.kr/user/answer`
 
   const response = await axios.get(url, { headers: { UID: uuid } })
 

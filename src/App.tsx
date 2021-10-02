@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Router } from './route/Router'
-import { Login, Loading, Header, Footer, Nav } from '@components'
+import { Loading, Header, Footer, Nav } from '@components'
+import { Login } from '@pages'
 import { InitData } from '@data/Init'
 
 function App() {

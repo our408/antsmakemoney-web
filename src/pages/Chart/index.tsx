@@ -1,10 +1,7 @@
-import { useState, useEffect } from 'react'
-
 import styled from 'styled-components'
 
-import { TableBody, TableHead } from '@components'
+import { TableBody, TableHead, Text } from '@components'
 import { TableTitle } from '../../components/Table/TableTitle'
-import { table } from 'node:console'
 
 const weeks: any = {
   this: '이번주',
@@ -24,13 +21,6 @@ const thContentsPrice = ['종목명', '현재 주가 (원)', '목표 주가 (원
 
 const TableContainer = styled.div`
   margin-bottom: 60px;
-`
-const Title = styled.div`
-  font-family: NeoDungGeunMo;
-  margin: 6% auto;
-  font-weight: 500;
-  font-size: 20px;
-  text-align: center;
 `
 
 interface IChart {
@@ -57,7 +47,7 @@ export const Chart = (props: IChart) => {
 
   return (
     <>
-      <Title>REPORT PICKs</Title>
+      <Text>돈을 잃지 말라 -워렌버핏</Text>
 
       {tableData.map((props: any, index: number) => {
         return (

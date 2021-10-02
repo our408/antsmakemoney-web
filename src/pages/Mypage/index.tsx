@@ -1,152 +1,7 @@
 import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { getUser } from '@data/UserAPI'
-import { Header, Line, QnABox, TableBody, TableHead } from '@components'
-
-const dataa: any = [
-  {
-    index: '1',
-    code: '034730',
-    cell11: 'SK',
-    cell12: '265,000',
-    cell13: '357,500',
-    cell21: '복합기업',
-    cell22: '8/24',
-    cell23: '35%',
-  },
-  {
-    index: '2',
-    code: '353200',
-    pick: '2',
-    cell11: '대덕전자',
-    cell12: '17,900',
-    cell13: '24,000',
-    cell21: '전자장비와기기',
-    cell22: '8/24',
-    cell23: '34%',
-  },
-  {
-    index: '2',
-    code: '353200',
-    pick: '2',
-    cell11: '대덕전자',
-    cell12: '17,900',
-    cell13: '24,000',
-    cell21: '전자장비와기기',
-    cell22: '8/24',
-    cell23: '34%',
-  },
-  {
-    index: '2',
-    code: '353200',
-    pick: '2',
-    cell11: '대덕전자',
-    cell12: '17,900',
-    cell13: '24,000',
-    cell21: '전자장비와기기',
-    cell22: '8/24',
-    cell23: '34%',
-  },
-  {
-    index: '2',
-    code: '353200',
-    pick: '2',
-    cell11: '대덕전자',
-    cell12: '17,900',
-    cell13: '24,000',
-    cell21: '전자장비와기기',
-    cell22: '8/24',
-    cell23: '34%',
-  },
-  {
-    index: '2',
-    code: '353200',
-    pick: '2',
-    cell11: '대덕전자',
-    cell12: '17,900',
-    cell13: '24,000',
-    cell21: '전자장비와기기',
-    cell22: '8/24',
-    cell23: '34%',
-  },
-  {
-    index: '2',
-    code: '353200',
-    pick: '2',
-    cell11: '대덕전자',
-    cell12: '17,900',
-    cell13: '24,000',
-    cell21: '전자장비와기기',
-    cell22: '8/24',
-    cell23: '34%',
-  },
-  {
-    index: '2',
-    code: '353200',
-    pick: '2',
-    cell11: '대덕전자',
-    cell12: '17,900',
-    cell13: '24,000',
-    cell21: '전자장비와기기',
-    cell22: '8/24',
-    cell23: '34%',
-  },
-  {
-    index: '2',
-    code: '353200',
-    pick: '2',
-    cell11: '대덕전자',
-    cell12: '17,900',
-    cell13: '24,000',
-    cell21: '전자장비와기기',
-    cell22: '8/24',
-    cell23: '34%',
-  },
-  {
-    index: '2',
-    code: '353200',
-    pick: '2',
-    cell11: '대덕전자',
-    cell12: '17,900',
-    cell13: '24,000',
-    cell21: '전자장비와기기',
-    cell22: '8/24',
-    cell23: '34%',
-  },
-  {
-    index: '2',
-    code: '353200',
-    pick: '2',
-    cell11: '대덕전자',
-    cell12: '17,900',
-    cell13: '24,000',
-    cell21: '전자장비와기기',
-    cell22: '8/24',
-    cell23: '34%',
-  },
-  {
-    index: '2',
-    code: '353200',
-    pick: '2',
-    cell11: '대덕전자',
-    cell12: '17,900',
-    cell13: '24,000',
-    cell21: '전자장비와기기',
-    cell22: '8/24',
-    cell23: '34%',
-  },
-  {
-    index: '2',
-    code: '353200',
-    pick: '2',
-    cell11: '대덕전자',
-    cell12: '17,900',
-    cell13: '24,000',
-    cell21: '전자장비와기기',
-    cell22: '8/24',
-    cell23: '34%',
-  },
-]
+import { Line, QnABox, TableBody, TableHead } from '@components'
 
 const Introduce = styled.div`
   margin-top: 50px;
@@ -180,10 +35,28 @@ export const Mypage = () => {
   const [nickname, setNickname] = useState('')
 
   useEffect(() => {
-    setNickname(localStorage.getItem('nickname')!)
+    const fetchData = () => {
+      const userData = getUser(localStorage.getItem('uid')!)
+      userData.then((data) => {
+        setNickname(data['nickname'])
+      })
+    }
+    fetchData()
   }, [])
 
-  console.log(nickname)
+  const dataa = [
+    {
+      arrow: true,
+      cell11: '현대해상',
+      cell12: '25,800',
+      cell13: '32,400',
+      cell21: '손해보험',
+      cell22: '8/20',
+      cell23: '26%',
+      code: '001450',
+      index: 1,
+    },
+  ]
 
   const data = {
     date: '21년 8월 23일 (월)',
@@ -196,7 +69,11 @@ export const Mypage = () => {
     content: '야식으로 떡볶이를 먹음',
   }
 
-  const tableHeadContent = ['종목명', '', '현재 주가 (원)']
+  const tableHeadContent = [
+    '종목명',
+    '즐겨 찾을 때 주가 (원)',
+    '현재 주가 (원)',
+  ]
 
   return (
     <>
@@ -218,13 +95,16 @@ export const Mypage = () => {
         </QnAContainer>
       </QnA>
       <Line />
-      <Favorites>
-        <Title>즐겨찾는 먹이</Title>
-        <TableHead content={tableHeadContent} />
-        {dataa.map((data: any, index: number) => {
-          return <TableBody data={data} key={index} />
-        })}
-      </Favorites>
     </>
   )
 }
+
+/*
+  <Favorites>
+    <Title>즐겨찾는 먹이</Title>
+    <TableHead content={tableHeadContent} />
+    {dataa.map((data: any, index: number) => {
+      return <TableBody data={data} key={index} />
+    })}
+  </Favorites>
+*/

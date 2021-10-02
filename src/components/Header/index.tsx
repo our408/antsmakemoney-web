@@ -9,12 +9,10 @@ const Container = styled.div`
 `
 
 const Title = styled.div`
-  font-size: 24px;
+  font-size: 16px;
 `
-
 const Ant = styled.img`
-  width: 50px;
-  height: 100%;
+  width: 24px;
 `
 
 export const Header = () => {
