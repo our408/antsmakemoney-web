@@ -7,7 +7,7 @@ export const createUser = async (
   gender?: string,
   age?: string
 ) => {
-  const url = `https://api.408.co.kr/user`
+  const url = `https://api.408.co.kr/user/`
   const body = {
     nickname: nickname,
     email: email,
