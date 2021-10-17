@@ -17,12 +17,12 @@ const Ant = styled.img`
 
 export const Header = () => {
   return (
-    <>
+    <header>
       <Container>
         <Title>개미도 때론 돈을 번다</Title>
         <Ant src={ant200} alt="🐜" />
       </Container>
       <Line />
-    </>
+    </header>
   )
 }

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { COLORS } from '@resources/colors'
 
-const Container = styled.div`
+const Container = styled.footer`
   font-family: AppleSDGothicNeo;
   padding: 10px;
   height: 25px;

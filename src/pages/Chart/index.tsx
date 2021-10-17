@@ -19,7 +19,7 @@ const thContentsPer = ['종목명', '동일업종 PER', 'PER']
 const descriptionPrice = '애널리스트 PICK 중 크게 오를 것 같은 종목 TOP 10'
 const thContentsPrice = ['종목명', '현재 주가 (원)', '목표 주가 (원)']
 
-const TableContainer = styled.div`
+const TableContainer = styled.article`
   margin-bottom: 60px;
 `
 
@@ -46,7 +46,7 @@ export const Chart = (props: IChart) => {
   const duration = JSON.parse(sessionStorage.getItem(`${props.week}_duration`)!)
 
   return (
-    <>
+    <main>
       <Text>돈을 잃지 말라 -워렌버핏</Text>
 
       {tableData.map((props: any, index: number) => {
@@ -65,6 +65,6 @@ export const Chart = (props: IChart) => {
           </TableContainer>
         )
       })}
-    </>
+    </main>
   )
 }

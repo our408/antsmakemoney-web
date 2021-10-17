@@ -30,7 +30,7 @@ interface ITableTitle {
 
 export const TableTitle = (TableTitleObj: ITableTitle) => {
   return (
-    <>
+    <header>
       <Line />
       <Container>
         <Week>[{TableTitleObj.week}]</Week>
@@ -40,6 +40,6 @@ export const TableTitle = (TableTitleObj: ITableTitle) => {
         <TableTitleDuration>{TableTitleObj.duration}</TableTitleDuration>
       </Container>
       <Line />
-    </>
+    </header>
   )
 }

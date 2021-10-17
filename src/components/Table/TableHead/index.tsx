@@ -3,7 +3,7 @@ import { TableHeadLines } from './TableHeadLine'
 import { TableHeadContents } from './TableHeadContent'
 import { SIZES, IDiv } from '@resources/sizes'
 
-const TableHeadWrap = styled.div<IDiv>`
+const TableHeadWrap = styled.section<IDiv>`
   margin: ${(props) => `0 ${props.margin} 10px ${props.margin}`};
 `
 
