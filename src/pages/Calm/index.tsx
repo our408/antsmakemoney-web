@@ -32,9 +32,6 @@ export const Calm = () => {
     setTimeout(() => {
       setOpacity(1)
     }, 300)
-
-    const ele = document.getElementById('playButton')
-    ele?.click()
   }, [])
 
   const audioPlay = () => {
@@ -44,7 +41,7 @@ export const Calm = () => {
 
   return (
     <Container>
-      <button style={{ display: 'none' }} id="playButton" onClick={audioPlay}>
+      <button id="playButton" onClick={audioPlay}>
         banya
       </button>
       <Budda src={budda} opacity={opacity} alt="budda" />
