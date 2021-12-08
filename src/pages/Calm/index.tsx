@@ -44,11 +44,9 @@ export const Calm = () => {
 
   return (
     <Container>
-      <button
-        style={{ display: 'none' }}
-        id="playButton"
-        onClick={audioPlay}
-      ></button>
+      <button style={{ display: 'none' }} id="playButton" onClick={audioPlay}>
+        banya
+      </button>
       <Budda src={budda} opacity={opacity} alt="budda" />
     </Container>
   )
