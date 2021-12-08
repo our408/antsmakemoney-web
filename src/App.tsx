@@ -11,7 +11,7 @@ function App() {
     InitData()
     setTimeout(() => {
       setLoading(true)
-    }, 800)
+    }, 900)
   }, [])
 
   const LoadingUI = <Loading />

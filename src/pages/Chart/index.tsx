@@ -1,7 +1,6 @@
 import styled from 'styled-components'
-
-import { TableBody, TableHead, Text } from '@components'
-import { TableTitle } from '../../components/Table/TableTitle'
+import { Footer } from '@components'
+import { TableBody, TableHead, Text, TableTitle, Line } from '@components'
 
 const weeks: any = {
   this: '이번주',
@@ -11,7 +10,7 @@ const descriptionPick = '애널리스트들이 가장 많이 PICK한 종목 TOP 
 const thContentsPick = ['종목명', '현재 주가 (원)', '목표 주가 (원)']
 
 const descriptionSector = '애널리스트들이 주목하고 있는 업종 TOP 10'
-const thContentsSector = ['업종명', '업종 리포트 수', '업종 PER']
+const thContentsSector = ['업종명', '리포트 수', '업종 PER']
 
 const descriptionPer = '애널리스트 PICK 중 저평가된 종목 TOP 10'
 const thContentsPer = ['종목명', '동일업종 PER', 'PER']
@@ -28,6 +27,10 @@ interface IChart {
 }
 
 export const Chart = (props: IChart) => {
+  const init = () => {
+    window.scrollTo(0, 0)
+  }
+
   const week = weeks[props.week]
   const tableData = [
     {
@@ -36,6 +39,7 @@ export const Chart = (props: IChart) => {
       tableHeadContent: thContentsPick,
       week: week,
     },
+
     {
       data: JSON.parse(sessionStorage.getItem(`${props.week}_ms`)!),
       description: descriptionSector,
@@ -45,26 +49,30 @@ export const Chart = (props: IChart) => {
   ]
   const duration = JSON.parse(sessionStorage.getItem(`${props.week}_duration`)!)
 
+  init()
   return (
     <main>
-      <Text>돈을 잃지 말라 -워렌버핏</Text>
+      <Text>돈을 잃지 말라 - 워렌버핏</Text>
+      <Line />
 
-      {tableData.map((props: any, index: number) => {
+      {tableData.map((datas: any, index: number) => {
         return (
           <TableContainer key={index}>
             <TableTitle
-              description={props.description}
+              description={datas.description}
               duration={duration}
               week={week}
             />
-            <TableHead content={props.tableHeadContent} />
+            <TableHead contents={datas.tableHeadContent} />
 
-            {props.data.map((data: any, index: number) => {
+            {datas.data.map((data: any, index: number) => {
               return <TableBody data={data} key={index} />
             })}
           </TableContainer>
         )
       })}
+
+      <Footer />
     </main>
   )
 }

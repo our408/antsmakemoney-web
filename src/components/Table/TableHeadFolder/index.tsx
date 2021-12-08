@@ -14,9 +14,7 @@ interface ITableHeadProps {
 export const TableHead = (props: ITableHeadProps) => {
   return (
     <TableHeadWrap margin={SIZES.sideMargin}>
-      <TableHeadLines content={props.content} />
       <TableHeadContents content={props.content} />
-      <TableHeadLines content={props.content} />
     </TableHeadWrap>
   )
 }

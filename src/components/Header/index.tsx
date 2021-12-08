@@ -5,7 +5,7 @@ import { Line } from '@components'
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-top: 10px;
+  padding-top: 10px;
 `
 
 const Title = styled.div`

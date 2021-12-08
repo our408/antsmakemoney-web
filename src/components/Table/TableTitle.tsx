@@ -13,7 +13,7 @@ const TableTitleDuration = styled.div`
   color: #9b9b9b;
 `
 
-const Container = styled.div`
+const Container = styled.header`
   padding: 3% 6%;
 `
 
@@ -30,16 +30,10 @@ interface ITableTitle {
 
 export const TableTitle = (TableTitleObj: ITableTitle) => {
   return (
-    <header>
-      <Line />
-      <Container>
-        <Week>[{TableTitleObj.week}]</Week>
-        <TableTitleDescription>
-          {TableTitleObj.description}
-        </TableTitleDescription>
-        <TableTitleDuration>{TableTitleObj.duration}</TableTitleDuration>
-      </Container>
-      <Line />
-    </header>
+    <Container>
+      <Week>[{TableTitleObj.week}]</Week>
+      <TableTitleDescription>{TableTitleObj.description}</TableTitleDescription>
+      <TableTitleDuration>{TableTitleObj.duration}</TableTitleDuration>
+    </Container>
   )
 }

@@ -42,6 +42,10 @@ module.exports = {
         ],
       },
       {
+        test: /\.(mp3|wav)$/,
+        loader: 'file-loader', // 또는 'url-loader'
+      },
+      {
         // write files under 10k to inline or copy files over 10k
         test: /\.(woff|woff2|eot|ttf|otf)$/,
         exclude: /node_modules/,

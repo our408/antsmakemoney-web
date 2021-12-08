@@ -4,18 +4,253 @@ export const InitData = () => {
   setSessionStorageChartData()
 }
 
-const setSessionStorageChartData = () => {
-  const thisweekDatas = getChart('this')
-  thisweekDatas.then((data: any) => {
-    sessionStorage.setItem('this_duration', JSON.stringify(data['duration']))
-    sessionStorage.setItem('this_mp', JSON.stringify(data['mostPick'])) // this most pick
-    sessionStorage.setItem('this_ms', JSON.stringify(data['mostSector'])) // this most sector
-  })
+const setSessionStorageChartData = async () => {
+  for (let week of ['this', 'last']) {
+    let weekDatas = await getChart(week)
 
-  const lastweekDatas = getChart('last')
-  lastweekDatas.then((data: any) => {
-    sessionStorage.setItem('last_duration', JSON.stringify(data['duration']))
-    sessionStorage.setItem('last_mp', JSON.stringify(data['mostPick'])) // last most pick
-    sessionStorage.setItem('last_ms', JSON.stringify(data['mostSector'])) // last most sector
-  })
+    sessionStorage.setItem(
+      `${week}_duration`,
+      JSON.stringify(weekDatas.duration)
+    )
+    sessionStorage.setItem(`${week}_mp`, JSON.stringify(weekDatas.mostPick)) // this most pick
+    sessionStorage.setItem(`${week}_ms`, JSON.stringify(weekDatas.mostSector)) // this most sector
+  }
+}
+
+const tmpThisWeek = {
+  duration: '2021-11-22(월) ~ 2021-11-24(수)',
+  mostPick: [
+    {
+      index: 1,
+      code: '009150',
+      pick: 3,
+      cell11: '삼성전기',
+      cell12: '177,500',
+      cell13: '250,000',
+      cell21: '전자장비와기기',
+      cell22: '11/24',
+      arrow: true,
+      cell23: '41%',
+    },
+    {
+      index: 2,
+      code: '298050',
+      pick: 2,
+      cell11: '효성첨단소재',
+      cell12: '655,000',
+      cell13: '950,000',
+      cell21: '화학',
+      cell22: '11/24',
+      arrow: true,
+      cell23: '45%',
+    },
+    {
+      index: 3,
+      code: '011790',
+      pick: 2,
+      cell11: 'SKC',
+      cell12: '196,000',
+      cell13: '300,000',
+      cell21: '화학',
+      cell22: '11/24',
+      arrow: true,
+      cell23: '53%',
+    },
+    {
+      index: 4,
+      code: '051910',
+      pick: 2,
+      cell11: 'LG화학',
+      cell12: '747,000',
+      cell13: '1,110,000',
+      cell21: '화학',
+      cell22: '11/24',
+      arrow: true,
+      cell23: '49%',
+    },
+    {
+      index: 5,
+      code: '097520',
+      pick: 2,
+      cell11: '엠씨넥스',
+      cell12: '47,900',
+      cell13: '64,000',
+      cell21: '핸드셋',
+      cell22: '11/24',
+      arrow: true,
+      cell23: '34%',
+    },
+    {
+      index: 6,
+      code: '353200',
+      pick: 2,
+      cell11: '대덕전자',
+      cell12: '21,500',
+      cell13: '30,000',
+      cell21: '전자장비와기기',
+      cell22: '11/24',
+      arrow: true,
+      cell23: '40%',
+    },
+    {
+      index: 7,
+      code: '011070',
+      pick: 2,
+      cell11: 'LG이노텍',
+      cell12: '291,000',
+      cell13: '390,000',
+      cell21: '전자장비와기기',
+      cell22: '11/24',
+      arrow: true,
+      cell23: '34%',
+    },
+    {
+      index: 8,
+      code: '336370',
+      pick: 2,
+      cell11: '솔루스첨단소재',
+      cell12: '103,500',
+      cell13: '115,000',
+      cell21: '전자장비와기기',
+      cell22: '11/24',
+      arrow: true,
+      cell23: '11%',
+    },
+    {
+      index: 9,
+      code: '035760',
+      pick: 2,
+      cell11: 'CJ ENM',
+      cell12: '160,900',
+      cell13: '217,500',
+      cell21: '방송과엔터테인먼트',
+      cell22: '11/24',
+      arrow: true,
+      cell23: '35%',
+    },
+    {
+      index: 10,
+      code: '253450',
+      pick: 2,
+      cell11: '스튜디오드래곤',
+      cell12: '91,600',
+      cell13: '125,000',
+      cell21: '방송과엔터테인먼트',
+      cell22: '11/24',
+      arrow: true,
+      cell23: '36%',
+    },
+  ],
+  mostSector: [
+    {
+      index: 1,
+      cell11: '방송과엔터테인먼트',
+      pick: 12,
+      cell12: '12개',
+      cell13: '-26.15배',
+      cell21: '지니뮤직',
+      cell22: '전체 리포트 중 12%',
+      arrow: false,
+      cell23: '11/24',
+    },
+    {
+      index: 2,
+      cell11: '전자장비와기기',
+      pick: 11,
+      cell12: '11개',
+      cell13: '29.07배',
+      cell21: '삼성전기',
+      cell22: '전체 리포트 중 11%',
+      arrow: false,
+      cell23: '11/24',
+    },
+    {
+      index: 3,
+      cell11: '반도체와반도체장비',
+      pick: 10,
+      cell12: '10개',
+      cell13: '14.16배',
+      cell21: '네패스아크',
+      cell22: '전체 리포트 중 10%',
+      arrow: false,
+      cell23: '11/24',
+    },
+    {
+      index: 4,
+      cell11: '화학',
+      pick: 9,
+      cell12: '9개',
+      cell13: '14.43배',
+      cell21: '효성첨단소재',
+      cell22: '전체 리포트 중 9%',
+      arrow: false,
+      cell23: '11/24',
+    },
+    {
+      index: 5,
+      cell11: '증권',
+      pick: 6,
+      cell12: '6개',
+      cell13: '4.03배',
+      cell21: '미래에셋증권',
+      cell22: '전체 리포트 중 6%',
+      arrow: false,
+      cell23: '11/24',
+    },
+    {
+      index: 6,
+      cell11: '핸드셋',
+      pick: 5,
+      cell12: '5개',
+      cell13: '217.62배',
+      cell21: '엠씨넥스',
+      cell22: '전체 리포트 중 5%',
+      arrow: false,
+      cell23: '11/24',
+    },
+    {
+      index: 7,
+      cell11: '호텔,레스토랑,레저',
+      pick: 5,
+      cell12: '5개',
+      cell13: '-20.2배',
+      cell21: '하나투어',
+      cell22: '전체 리포트 중 5%',
+      arrow: false,
+      cell23: '11/24',
+    },
+    {
+      index: 8,
+      cell11: '전기제품',
+      pick: 4,
+      cell12: '4개',
+      cell13: '69.41배',
+      cell21: '엘앤에프',
+      cell22: '전체 리포트 중 4%',
+      arrow: false,
+      cell23: '11/24',
+    },
+    {
+      index: 9,
+      cell11: '디스플레이장비및부품',
+      pick: 4,
+      cell12: '4개',
+      cell13: '47.91배',
+      cell21: '덕산테코피아',
+      cell22: '전체 리포트 중 4%',
+      arrow: false,
+      cell23: '11/24',
+    },
+    {
+      index: 10,
+      cell11: '광고',
+      pick: 3,
+      cell12: '3개',
+      cell13: '16.47배',
+      cell21: '인크로스',
+      cell22: '전체 리포트 중 3%',
+      arrow: false,
+      cell23: '11/24',
+    },
+  ],
 }
