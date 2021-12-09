@@ -3,13 +3,17 @@ import React, { useEffect, useState, useRef } from 'react'
 
 import { budda } from '@resources/img'
 import { budda_ani } from '@resources/img'
+import { playButton } from '@resources/img'
 import banya from '../../resources/audio/banya.mp3'
-import help from '../../resources/audio/Help_di.wav'
-import { IDiv } from '@resources/sizes'
-import { ELOOP } from 'constants'
 
 const Budda = styled.img<IBudda>`
   width: 360px;
+  opacity: ${({ opacity }) => opacity};
+  transition: opacity 5000ms, visibility 5000ms;
+`
+
+const PlayButton = styled.img<IBudda>`
+  width: 30px;
   opacity: ${({ opacity }) => opacity};
   transition: opacity 5000ms, visibility 5000ms;
 `
@@ -35,16 +39,33 @@ export const Calm = () => {
   }, [])
 
   const audioPlay = () => {
-    const el: HTMLAudioElement = new Audio(banya)
-    el.play()
+    const banyaPlayer = document.getElementById(
+      'banyaPlayer'
+    ) as HTMLAudioElement
+
+    if (banyaPlayer) {
+      banyaPlayer.play()
+    }
   }
 
   return (
     <Container>
-      <button id="playButton" onClick={audioPlay}>
-        banya
-      </button>
-      <Budda src={budda} opacity={opacity} alt="budda" />
+      <div>
+        <Budda src={budda} opacity={opacity} alt="budda" />
+
+        <div style={{ textAlign: 'center' }}>
+          {/*
+          <PlayButton
+            src={playButton}
+            opacity={opacity}
+            alt="play"
+            onClick={audioPlay}
+            id="playButton"
+          />
+          */}
+          <audio id="banyaPlayer" src={banya} autoPlay></audio>
+        </div>
+      </div>
     </Container>
   )
 }
