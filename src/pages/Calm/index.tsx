@@ -10,7 +10,7 @@ const Budda = styled.img`
 `
 
 const Container = styled.main<IBudda>`
-  height: calc(100vh - 100px);
+  height: calc(100% - 100px);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -75,7 +75,7 @@ export const Calm = () => {
   )
 }
 
-const lyrics1 = '마하반야바라밀다심경 관 자재보살 행심'
+const lyrics1 = '마하반야 바라밀다심경 관자재보살 행심'
 const lyrics2 =
   '반야바라밀다시 조견오온개공도 일체고액 사리자 색불이공 공불이색  색즉시공 공즉시색'
 const lyrics3 =
