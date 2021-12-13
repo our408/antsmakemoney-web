@@ -86,7 +86,9 @@ export const Login = (props: ILogin) => {
             <KakaoLogin
               token={token}
               onSuccess={(props) => success(props)}
-              onFail={() => alert('잠시 후에 다시 시도 해주세요!')}
+              onFail={() =>
+                alert('🐜 페로몬이 이상하다.. 조금만 있다가 다시 시도해달라..!')
+              }
               render={({ onClick }) => {
                 return (
                   <a
@@ -96,7 +98,7 @@ export const Login = (props: ILogin) => {
                       onClick()
                     }}
                   >
-                    <KakaoLoginImg src={kakaoLoginImage} alt="kakao login" />
+                    <KakaoLoginImg src={kakaoLoginImage} alt="kakao login 🐜" />
                   </a>
                 )
               }}
