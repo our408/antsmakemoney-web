@@ -18,7 +18,7 @@ const Container = styled.main<IBudda>`
   background-color: #99a0a3;
 
   opacity: ${({ opacity }) => opacity};
-  transition: opacity 7000ms, visibility 7000ms;
+  transition: opacity 5000ms, visibility 5000ms;
 `
 
 interface IBudda {
@@ -35,43 +35,47 @@ export const Calm = () => {
   }, [])
 
   return (
-    <Container opacity={opacity}>
-      <Marquee
-        style={{
-          backgroundColor: '#99a0a3',
-        }}
-        speed={45}
-        gradient={false}
-        delay={5.3}
-      >
-        <p
+    <>
+      <audio src={banya} autoPlay></audio>
+      <Container opacity={opacity}>
+        <Marquee
           style={{
-            fontSize: 16,
+            backgroundColor: '#99a0a3',
+            fontSize: '16px',
           }}
+          speed={50}
+          gradient={false}
+          delay={5.3}
         >
-          &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-          {lyrics1}
-          &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-          {lyrics2}
-          &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-          {lyrics3}
-          &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-          {lyrics4}
-          &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-          {lyrics5}
-          &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-          {lyrics6}
-          &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-          {lyrics7}
-          &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-          {lyrics8}
-          {lyrics9}
-          {lyrics10}
-        </p>
-      </Marquee>
-      <Budda src={budda} alt="budda" />
-      <audio id="banyaPlayer" src={banya} autoPlay></audio>
-    </Container>
+          <p
+            style={{
+              fontSize: '16px',
+            }}
+          >
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+            {lyrics1}
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+            {lyrics2}
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+            {lyrics3}
+            {lyrics4}
+            &emsp;&emsp;&emsp;&emsp;&emsp;
+            {lyrics5}
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+            {lyrics6}
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+            {lyrics7}
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+            {lyrics8}
+            &emsp;&emsp;&emsp;&emsp;
+            {lyrics9}
+            &emsp;&emsp;
+            {lyrics10}
+          </p>
+        </Marquee>
+        <Budda src={budda} alt="budda" />
+      </Container>
+    </>
   )
 }
 
